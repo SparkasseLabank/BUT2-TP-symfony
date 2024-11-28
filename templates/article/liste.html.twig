@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ArticleController!{% endblock %}
+
+{% block body %}
+            <div id="layoutSidenav_content">
+                <main>
+                    <div class="container-fluid px-4">
+                        <h1 class="mt-4">Static Navigation</h1>
+                        <ol class="breadcrumb mb-4">
+                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                            <li class="breadcrumb-item active">Static Navigation</li>
+                        </ol>
+                        <div class="row">
+                        {% for article in articles %}
+                        <div class="col-4">
+                            <div class="card" style="margin-bottom: 20px">
+                                <div class="card-header">
+                                    Article N°{{article.id}}
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{article.titre}}</h5>
+                                    <p class="card-text">{{article.texte}}</p>
+                                    <a href="#" class="btn btn-primary">{{article.date|date('Y-m-d H:i:s')}}</a>
+                                    <a href={{ path("app_article_update",{"id": article.id}, relative = false)}} class="btn btn-warning">Modifier</a>
+                                    <a href={{ path("app_article_delete",{"id": article.id}, relative = false)}} class="btn btn-danger">Supprimer</a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        </div>
+                        </div>
+                        <div style="height: 100vh"></div>
+                        <div class="card mb-4"><div class="card-body">When scrolling, the navigation stays at the top of the page. This is the end of the static navigation demo.</div></div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+{% endblock %}
